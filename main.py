@@ -12,5 +12,8 @@ class Contact(BaseModel):
     last_name = CharField()
     phone_number = CharField()
 
-
 db.connect()
+  chad = Contact (
+    first_name = "Chad",
+    last_name = "Smith",
+    phone_number = "7576890342",)
