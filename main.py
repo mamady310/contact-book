@@ -32,7 +32,8 @@ def welcome_page():
     else:
        exit      
 
-def show_contact():
+# def show_contact():
+
     
 
 def create_contact(): 
@@ -46,13 +47,14 @@ def create_contact():
         phone_number = new_phone_number
     )
     add_contact.save()
+    welcome_page()
 
 def delete_contact():
     last_name = input("Find contact to delete by last name:  ")
     contact = Contact.get(Contact.last_name == last_name)
-    delete_contact()
+    contact.delete_instance() 
+    welcome_page()
 
-    contact.delete_instace()
     
 
 def update_contact():
@@ -63,6 +65,7 @@ def update_contact():
     contact.phone_number = input( "phone number")
   
     contact.save()
+    welcome_page()
 
 
 # john = Contact(
