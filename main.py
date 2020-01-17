@@ -18,7 +18,7 @@ db.create_tables([Contact])
 
 def welcome_page():
     print("Welcome to your contact book. What would you like do?" )
-    print('show contact: 1 create contact: 2 delete contact: 3 update contact: 4 exit: 5')
+    print('show contacts: 1 create contact: 2 delete contact: 3 update contact: 4 exit: 5')
     answer = input('')
     if answer == '1':
         print('answer')
@@ -31,6 +31,9 @@ def welcome_page():
        update_contact()
     else:
        exit      
+
+def show_contact():
+    
 
 def create_contact(): 
     new_first_name = input("first name ")
@@ -45,27 +48,20 @@ def create_contact():
     add_contact.save()
 
 def delete_contact():
-    first_name = input("first name ")
-    contact = Contact.get(Contact.first_name == first_name)
-    contact.delete_instace()
+    last_name = input("Find contact to delete by last name:  ")
+    contact = Contact.get(Contact.last_name == last_name)
     delete_contact()
+
+    contact.delete_instace()
     
 
 def update_contact():
     last_name = input("Find Contact to update by last name: ")
-
-    contact = Contact.get(Contact.last_name == last_name)
-    # contact.first_name = input("first name ")  
+    contact = Contact.get(Contact.last_name == last_name) 
     contact.first_name = input ("first name ")
     contact.last_name = input("last name ")
     contact.phone_number = input( "phone number")
-    # contact.phone_number = input("phone number ")   
-
-    # edit_contact = Contact.get(
-    #    update_first_name == first_name,
-    #    update_last_name == last_name,
-    #    update_phone_number == phone_number 
-    # )
+  
     contact.save()
 
 
