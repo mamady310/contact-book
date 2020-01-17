@@ -13,17 +13,24 @@ class Contact(BaseModel):
     phone_number = CharField()
 
 db.connect()
-db.drop_tables([Contact])
+# db.drop_tables([Contact])
 db.create_tables([Contact])
 
 def welcome_page():
-    print("Welcome to your contact book. What would you like do:" )
-    print('show contact: 1 create contact: 2 delete contact: 3 update contact: 4 exit: 5)
+    print("Welcome to your contact book. What would you like do?" )
+    print('show contact: 1 create contact: 2 delete contact: 3 update contact: 4 exit: 5')
     answer = input('')
     if answer == '1':
-        show_contact()
+        print('answer')
+        # show_contact()
     elif answer == '2':
-        create_contact()    
+       create_contact() 
+    elif answer == '3':
+       delete_contact()      
+    elif answer == '4':
+       update_contact()
+    else:
+       exit      
 
 def create_contact(): 
     new_first_name = input("first name ")
@@ -42,19 +49,24 @@ def delete_contact():
     contact = Contact.get(Contact.first_name == first_name)
     contact.delete_instace()
     delete_contact()
+    
 
-# GO  BACK TO UPDATE LATER
-# def update_contact():
-#     update_first_name = input("first name ")  
-#     update_last_name = input("last name ")
-#     update_phone_number = input("phone number ")   
+def update_contact():
+    last_name = input("Find Contact to update by last name: ")
 
-#     edit_contact = Contact(
-#        first_name = update_first_name,
-#        last_name = update_last_name,
-#        phone_numbert = update_phone_number 
-#     )
+    contact = Contact.get(Contact.last_name == last_name)
+    # contact.first_name = input("first name ")  
+    contact.first_name = input ("first name ")
+    contact.last_name = input("last name ")
+    contact.phone_number = input( "phone number")
+    # contact.phone_number = input("phone number ")   
 
+    # edit_contact = Contact.get(
+    #    update_first_name == first_name,
+    #    update_last_name == last_name,
+    #    update_phone_number == phone_number 
+    # )
+    contact.save()
 
 
 # john = Contact(
@@ -68,6 +80,4 @@ def delete_contact():
 #  first_name = "Chad",
 #  last_name = "Smith",
 #  phone_number = "7576890342")
-
-   
 welcome_page()
