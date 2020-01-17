@@ -22,7 +22,7 @@ def welcome_page():
     answer = input('')
     if answer == '1':
         print('answer')
-        # show_contact()
+        show_contact()
     elif answer == '2':
        create_contact() 
     elif answer == '3':
@@ -32,8 +32,11 @@ def welcome_page():
     else:
        exit      
 
-# def show_contact():
-
+def show_contact():
+    contacts = Contact.select()
+    for i in contacts:
+        print(f"Name {i.first_name} and {i.last_name}")
+    welcome_page()    
     
 
 def create_contact(): 
@@ -68,15 +71,5 @@ def update_contact():
     welcome_page()
 
 
-# john = Contact(
-#     first_name="John", 
-#     last_name="Doe", 
-#     phone_number="1234567890")
 
-# john.save()
-
-# chad = Contact (
-#  first_name = "Chad",
-#  last_name = "Smith",
-#  phone_number = "7576890342")
 welcome_page()
