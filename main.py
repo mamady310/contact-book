@@ -63,10 +63,9 @@ def delete_contact():
 def update_contact():
     last_name = input("Find Contact to update by last name: ")
     contact = Contact.get(Contact.last_name == last_name) 
-    contact.first_name = input ("first name ")
+    contact.first_name = input("first name ")
     contact.last_name = input("last name ")
-    contact.phone_number = input( "phone number")
-  
+    contact.phone_number = input( "phone number ")
     contact.save()
     welcome_page()
 
