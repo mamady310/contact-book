@@ -4,7 +4,7 @@ Contact book is a way for a user to store contacts into a local database.
 # Author
 Mamady Sillah 
 
-# Technoogies Used
+# Technologies Used
 Python
 SQL
 PeeWee Command Terminal
