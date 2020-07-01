@@ -35,7 +35,7 @@ def welcome_page():
 def show_contact():
     contacts = Contact.select()
     for i in contacts:
-        print(f"Name {i.first_name} {i.last_name}")
+        print(f"Name {i.first_name} {i.last_name} phone: {i.phone_number}")
     welcome_page()    
     
 
